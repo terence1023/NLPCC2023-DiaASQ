@@ -1,5 +1,7 @@
 # NLPCC-Share-Task4 HLT-base
 
+- NLPCC-Share-Task4 Conversational Aspect-based Sentiment Quadruple Analysis Top 2.
+
 ## 准备
 运行前需要下载预训练语言模型到`project/pre_trained_model`目录下，详细见`project/pre_trained_model/README.md`文件
 
