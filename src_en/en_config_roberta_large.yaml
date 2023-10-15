@@ -1,0 +1,68 @@
+# cuda
+cuda_index: 0
+seed: 3407 #42
+
+# path 
+lang: en
+annotation_dir: data/dataset/annotation
+json_path: data/dataset/jsons
+preprocessed_dir: data/preprocessed
+target_dir: data/save/en/
+
+bert-en:
+  bert_path: pre_trained_model/roberta-large
+  cls: '<s>'
+  sep: '</s>'
+  unk: '<unk>'
+  pad: '<pad>'
+  start: ':'
+  end:   '.'
+
+bert-zh:
+  bert_path: hfl/chinese-roberta-wwm-ext   # hfl/chinese-roberta-wwm-ext
+  cls: '[CLS]'
+  sep: '[SEP]'
+  unk: '[UNK]'
+  pad: '[PAD]'
+  start: '[unused1]'
+  end:   '[unused2]'
+
+unkown_tokens: '🍔—🐛🙉🙄🔨🏆🆔👌👀🥺冖🌚🙈😭🍎😅💩尛硌糇💰🐴🙊💯⭐🐶🐟🙏😄🏻📶🐮🍺❌🤔🐍🐸🙃🤣🏆😂🌚' # for hfl/chinese-roberta-wwm-ext
+# unkown_tokens: '🍔—🐛🙉🙄🔨🏆🆔👌👀🥺冖🌚🙈😭🍎😅💩尛糇≥💰🐴🙊💯⭐🐶🐟🙏😄🏻📶🐮🍺❌🤔🐍🐸🙃🤣🏆😂🌚'   # for Erlangshen-DeBERTa-v2-320M-Chinese
+# unkown_tokens: '🍔—🐛🙉🙄🔨🏆🆔👌👀🥺冖🌚🙈😭🍎尛糇💰🐴🙊💯⭐🐶🐟🙏😄🏻📶🐮🍺🤔🐍🐸🙃🤣🏆😂🌚'   # for pre_trained_model/deberta-v3-base
+# unkown_tokens: '冖尛糇'   # for pre_trained_model/deberta-v3-base
+max_length: 512
+
+# parameter 
+epoch_size: 15   # 10
+batch_size: 4    # 2
+lr: 1e-3         # 1e-3
+bert_lr: 2e-5    # 1e-5
+patience: 10
+max_grad_norm: 1.0
+warmup_proportion: 0.1
+gradient_accumulation_steps: 1
+adam_epsilon: 1e-8
+warmup_steps: 200
+weight_decay: 0
+
+# dict 
+bio_mode: 'OBIES'
+asp_type: 'Aspect'
+tgt_type: 'Target'
+opi_type: 'Opinion'
+
+polarity_dict:
+  O: 0
+  pos: 1
+  neg: 2
+  other: 3
+
+
+# You can set this value to 'False' to save GPU memory, but the performance may decrease.
+use_rope: True
+
+loss_weight:
+  ent: 1
+  rel: 5
+  pol: 3
